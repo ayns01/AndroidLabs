@@ -54,4 +54,37 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_main"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="intentFromOne"
+            android:text="One" />
+
+        <Button
+            android:id="@+id/button_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:onClick="intentFromTwo"
+            android:text="Two" />
+
+        <Button
+            android:id="@+id/button_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:onClick="intentFromThree"
+            android:text="Three" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
