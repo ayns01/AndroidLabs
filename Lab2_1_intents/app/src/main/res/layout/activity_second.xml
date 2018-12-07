@@ -73,4 +73,103 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </ScrollView>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_message"
+        tools:context=".MainActivity">
+
+        <!-- row1 -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/itemBtn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bread"
+                android:onClick="preserveItem"/>
+
+            <Button
+                android:id="@+id/itemBtn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="meat"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fish"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="chocolate"
+                android:onClick="preserveItem" />
+        </TableRow>
+        <!-- row2 -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/itemBtn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="peach"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cheese"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="apple"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="milk"
+                android:onClick="preserveItem" />
+        </TableRow>
+        <!-- row3 -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/itemBtn9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lime"
+                android:onClick="preserveItem" />
+
+            <Button
+                android:id="@+id/itemBtn10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="candy"
+                android:onClick="preserveItem" />
+        </TableRow>
+    </TableLayout>
 </android.support.constraint.ConstraintLayout>
