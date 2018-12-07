@@ -1,6 +1,7 @@
 package com.example.ayana.twoactivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mReplyHeadTextView;
     private TextView mReplyTextView;
 
+    private TextView mLocationEditText;
+
     private TextView mItem1TextView;
     private TextView mItem2TextView;
     private TextView mItem3TextView;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         mMessageEditText = findViewById(R.id.editText_main);
         mReplyHeadTextView = findViewById(R.id.text_header_reply);
         mReplyTextView = findViewById(R.id.text_message_reply);
+
+        mLocationEditText = findViewById(R.id.editText);
 
         mItem1TextView = findViewById(R.id.item1);
         mItem2TextView = findViewById(R.id.item2);
@@ -316,5 +321,17 @@ public class MainActivity extends AppCompatActivity {
          Intent intent = new Intent(this, SecondActivity.class);
          startActivityForResult(intent, SHOP_REQUEST);
 
+    }
+
+    public void showLocation(View view) {
+        String loc = mLocationEditText.getText().toString();
+        Uri addressUri = Uri.parse("geo:0,0?q=" + loc);
+        Intent intent = new Intent(Intent.ACTION_VIEW, addressUri);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Log.d("ImplicitIntents", "Can't handle this intent!");
+        }
     }
 }
