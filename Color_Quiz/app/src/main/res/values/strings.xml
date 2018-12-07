@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="select_the_right_color">Select the right color</string>
+    <string name="score_0">Score=0</string>
+    <string name="cyan">Cyan</string>
+    <string name="left">left</string>
+    <string name="right">right</string>
+</resources>
