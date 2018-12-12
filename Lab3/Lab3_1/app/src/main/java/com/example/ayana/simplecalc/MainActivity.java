@@ -105,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
      */
     private static Double getOperand(EditText operandEditText) {
         String operandText = getOperandText(operandEditText);
-        return Double.valueOf(operandText);
+        if (operandText.equals("")) {
+            return 0.0;
+        } else {
+            return Double.valueOf(operandText);
+        }
     }
 
     /**

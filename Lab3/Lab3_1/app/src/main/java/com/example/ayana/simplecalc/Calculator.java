@@ -23,6 +23,7 @@ public class Calculator {
          * Divide operation
          */
         public double div(double firstOperand, double secondOperand) {
+
             return firstOperand / secondOperand;
         }
 
