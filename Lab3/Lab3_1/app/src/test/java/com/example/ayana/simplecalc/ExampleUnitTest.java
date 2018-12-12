@@ -77,15 +77,9 @@ public class ExampleUnitTest {
         double resultMul = mCalculator.mul(32d, 2d);
         assertThat(resultMul, is(equalTo(64d)));
     }
-//    @Test
-//    public void divTwoNumbers() {
-//        double resultDiv = mCalculator.div(32d,2d);
-//        assertThat(resultDiv, is(equalTo(16d)));
-//    }
     @Test(expected = java.lang.IllegalArgumentException.class)
     public void divByZeroThrows() {
         double resultDiv = mCalculator.div(32d,0);
-//        assertThat(resultDiv, is(equalTo(32d)));
     }
     @Test
     public void divTwoNumbersZero() {
