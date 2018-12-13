@@ -23,21 +23,6 @@ public class OrderActivity extends AppCompatActivity
         String message = "Order: " + intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.order_textview);
         textView.setText(message);
-
-        Spinner spinner = findViewById(R.id.label_spinner);
-        if (spinner != null) {
-            spinner.setOnItemSelectedListener(this);
-        }
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.labels_array, android.R.layout.simple_spinner_item);
-
-        adapter.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner.
-        if (spinner != null) {
-            spinner.setAdapter(adapter);
-        }
     }
 
     public void onRadioButtonClicked(View view) {
