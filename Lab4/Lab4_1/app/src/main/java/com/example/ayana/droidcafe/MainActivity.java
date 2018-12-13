@@ -1,20 +1,25 @@
 package com.example.ayana.droidcafe;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE =
-            "com.example.android.droidcafe.extra.MESSAGE";
+    public static final String TAG =
+            MainActivity.class.getSimpleName();
     String mOrderMessage;
 
     @Override
@@ -28,11 +33,47 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
-                startActivity(intent);
             }
         });
+
+        EditText editText = findViewById(R.id.editText_main);
+        if (editText != null)
+            editText.setOnEditorActionListener
+                    (new TextView.OnEditorActionListener() {
+                        @Override
+                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                            boolean handled = false;
+                            if (actionId == EditorInfo.IME_ACTION_SEND) {
+                                dialNumber();
+                                handled = true;
+                            }
+                            return handled;
+                        }
+                        // If view is found, set the listener for editText.
+                    });
+    }
+
+    private void dialNumber() {
+        // Find the editText_main view.
+        EditText editText = findViewById(R.id.editText_main);
+        String phoneNum = null;
+        // If the editText field is not null,
+        // concatenate "tel: " with the phone number string.
+        if (editText != null) phoneNum = "tel:" +
+                editText.getText().toString();
+        // Optional: Log the concatenated phone number for dialing.
+        Log.d(TAG, "dialNumber: " + phoneNum);
+        // Specify the intent.
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        // Set the data for the intent as the phone number.
+        intent.setData(Uri.parse(phoneNum));
+        // If the intent resolves to a package (app),
+        // start the activity with the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Log.d("ImplicitIntents", "Can't handle this!");
+        }
     }
 
     @Override
@@ -60,17 +101,5 @@ public class MainActivity extends AppCompatActivity {
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
-    }
-    public void showDonutOrder(View view) {
-        mOrderMessage = getString(R.string.donut_order_message);
-        displayToast(mOrderMessage);
-    }
-    public void showIceCreamOrder(View view) {
-        mOrderMessage = getString(R.string.ice_cream_order_message);
-        displayToast(mOrderMessage);
-    }
-    public void showFroyoOrder(View view) {
-        mOrderMessage = getString(R.string.froyo_order_message);
-        displayToast(mOrderMessage);
     }
 }
