@@ -9,13 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE =
-            "com.example.android.droidcafe.extra.MESSAGE";
-    String mOrderMessage;
+    CheckBox chocolateSyrup, crushedNuts, cherries, oreoCookieCrumbles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
-                startActivity(intent);
             }
         });
+
+        chocolateSyrup = (CheckBox) findViewById(R.id.cb_chocolateSyrup);
+        crushedNuts = (CheckBox) findViewById(R.id.cb_crushedNuts);
+        cherries = (CheckBox) findViewById(R.id.cb_cherries);
+        oreoCookieCrumbles = (CheckBox) findViewById(R.id.cb_oreoCookieCrumbles);
     }
 
     @Override
@@ -57,20 +58,46 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public String androidCheckBoxClicked(View view) {
+        String checkBoxChoices = "";
+        switch (view.getId()) {
+            case R.id.cb_chocolateSyrup:
+                checkBoxChoices += chocolateSyrup.getText().toString();
+                break;
+            case R.id.cb_crushedNuts:
+                checkBoxChoices += crushedNuts.getText().toString();
+                break;
+            case R.id.cb_cherries:
+                checkBoxChoices += cherries.getText().toString();
+                break;
+            case R.id.cb_oreoCookieCrumbles:
+                checkBoxChoices += oreoCookieCrumbles.getText().toString();
+                break;
+        }
+        return checkBoxChoices;
+    }
+
     public void displayToast(String message) {
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_SHORT).show();
     }
-    public void showDonutOrder(View view) {
-        mOrderMessage = getString(R.string.donut_order_message);
-        displayToast(mOrderMessage);
-    }
-    public void showIceCreamOrder(View view) {
-        mOrderMessage = getString(R.string.ice_cream_order_message);
-        displayToast(mOrderMessage);
-    }
-    public void showFroyoOrder(View view) {
-        mOrderMessage = getString(R.string.froyo_order_message);
-        displayToast(mOrderMessage);
+
+    public void showToast(View view) {
+        String checkBoxChoices = "";
+        if (chocolateSyrup.isChecked()) {
+            checkBoxChoices += chocolateSyrup.getText().toString() + ", ";
+        }
+        if (crushedNuts.isChecked()) {
+            checkBoxChoices += crushedNuts.getText().toString() + ", ";
+        }
+        if (cherries.isChecked()) {
+            checkBoxChoices += cherries.getText().toString() + ", ";
+        }
+        if (oreoCookieCrumbles.isChecked()) {
+            checkBoxChoices += oreoCookieCrumbles.getText().toString() + ", ";
+        }
+
+        displayToast("Topping: " + checkBoxChoices);
     }
 }
+
