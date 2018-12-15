@@ -1,0 +1,4 @@
+#Sat Dec 15 09:02:52 JST 2018
+base.0=/Users/sakaiayana/AndroidStudioProjects/CICCCAugMobile/Lab4/Lab4_4/app/build/intermediates/transforms/dexMerger/debug/7
+path.0=classes.dex
+renamed.0=classes.dex
