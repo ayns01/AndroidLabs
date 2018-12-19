@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RecipeDetailActivity"
+                  android:parentActivityName=".MainActivity"
+            ></activity>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ayana.recyclerview.MainActivity" />
     </application>
 
 </manifest>
